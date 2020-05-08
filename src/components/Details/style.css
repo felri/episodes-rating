@@ -1,0 +1,76 @@
+.header {
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.header:hover {
+  opacity: 0.5;
+}
+
+.container-details-image {
+  height: 270px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-position: center !important;
+  background-size: cover !important;
+  transition: 300ms;
+}
+
+.container-poster-item {
+  padding: 20px;
+}
+
+.container-info-details {
+  margin-top: 31px;
+}
+
+.container-details-tvshow {
+  display: flex;
+  margin-left: 20px;
+}
+
+.container-title-text {
+  font-size: 36px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.container-title-details {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.container-plot-text {
+  padding: 20px;
+  max-width: 700px;
+  padding-left: 0;
+  line-height: 1.7;
+}
+
+.container-rating-text {
+  margin-right: 20px;
+  font-size: 30px;
+}
+
+.container-rating-text > span {
+  font-weight: 800;
+  color: green;
+}
+
+@media only screen and (max-width: 600px) {
+  .container-details-tvshow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-title-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,22 @@
+.container-tooltip {
+  padding: 20px;
+  background-color: white;
+  color: black;
+}
+
+.container-tooltip-title {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.container-tooltip-season {
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.container-tooltip-score > span {
+  color: green;
+  font-weight: 800;
+  margin-left: 10px;
+  font-size: 25px;
+}

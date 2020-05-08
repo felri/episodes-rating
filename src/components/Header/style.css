@@ -1,0 +1,12 @@
+.header {
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  transition: 0.3s;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.header:hover {
+  opacity: 0.5;
+}

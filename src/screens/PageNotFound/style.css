@@ -1,0 +1,34 @@
+.container-chart-screen {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container-error-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.container-text-chart-error {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.container-info-chart-screen {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .container-chart-screen {
+    overflow: scroll;
+  }
+  .recharts-responsive-container {
+    margin-top: 450px;
+  }
+}

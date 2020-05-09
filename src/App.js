@@ -8,6 +8,7 @@ import { AnimatedSwitch } from 'react-router-transition';
 
 import Home from 'screens/Home'
 import Chart from 'screens/Chart'
+import PageNotFound from 'screens/PageNotFound'
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route path='*' exact={true}>
+              <PageNotFound />
             </Route>
           </AnimatedSwitch>
         </Switch>

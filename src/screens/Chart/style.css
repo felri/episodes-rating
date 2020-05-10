@@ -27,8 +27,33 @@
 @media only screen and (max-width: 600px) {
   .container-chart-screen {
     overflow: scroll;
+    margin-top: 83px;
+    position: relative;
   }
-  .recharts-responsive-container {
-    margin-top: 450px;
+  .container-info-chart-screen {
+    position: relative;
+    margin-top: 382px !important;
   }
+  .main-container-icon-chart {
+    top: 0 !important;
+  }
+}
+
+.main-container-icon-chart {
+  position: absolute;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 19px;
+  z-index: 2;
+}
+
+.container-icon-chart {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.container-icon-chart:hover {
+  opacity: 0.5;
 }

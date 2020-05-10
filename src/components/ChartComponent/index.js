@@ -1,5 +1,17 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  AreaChart,
+  Area,
+  BarChart,
+  ScatterChart,
+  Bar,
+  Scatter,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Tooltip
+} from 'recharts';
 
 import './style.css'
 
@@ -19,17 +31,46 @@ const tollTip = (item) => {
   )
 }
 
-export default function ({ item }) {
+export const AreaChartComponnent = function ({ item }) {
   return (
     item.episodes.length > 0 &&
     <ResponsiveContainer width='100%' height={400}>
-      <LineChart data={item.episodes} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} onClick={e => console.log(e)} >
-        <Line dot={false} name="Rating" type="monotone" dataKey="imdbrating" stroke="#8884d8" />
+      <AreaChart data={item.episodes} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} onClick={e => console.log(e)} >
+        <Area dot={false} name="Rating" type="monotone" dataKey="imdbrating" stroke="#8884d8" fill="rgba(135, 131, 216, 0.2)" />
         <Tooltip content={tollTip} />
         <CartesianGrid stroke="#ccc" strokeDasharray="0 3" />
         <XAxis />
         <YAxis domain={[0, 10]} />
-      </LineChart>
+      </AreaChart>
+    </ResponsiveContainer >
+  );
+}
+
+export const ScatterChartComponnent = function ({ item }) {
+  return (
+    item.episodes.length > 0 &&
+    <ResponsiveContainer width='100%' height={400}>
+      <ScatterChart data={item.episodes} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} onClick={e => console.log(e)} >
+        <Scatter lineType="fitting" line name="Rating" type="monotone" dataKey="imdbrating" stroke="#8884d8" fill="#8884d8" />
+        <Tooltip content={tollTip} />
+        <CartesianGrid stroke="#ccc" strokeDasharray="0 3" />
+        <XAxis />
+        <YAxis domain={[0, 10]} />
+      </ScatterChart>
+    </ResponsiveContainer >
+  );
+}
+
+export const BarChartComponnent = function ({ item }) {
+  return (
+    item.episodes.length > 0 &&
+    <ResponsiveContainer width='100%' height={400}>
+      <BarChart data={item.episodes} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} onClick={e => console.log(e)} >
+        <Bar name="Rating" type="monotone" dataKey="imdbrating" stroke="#8884d8" fill="rgba(135, 131, 216, 0.2)" />
+        <Tooltip content={tollTip} />
+        <XAxis />
+        <YAxis domain={[0, 10]} />
+      </BarChart>
     </ResponsiveContainer >
   );
 }

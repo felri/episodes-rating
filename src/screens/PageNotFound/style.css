@@ -28,7 +28,4 @@
   .container-chart-screen {
     overflow: scroll;
   }
-  .recharts-responsive-container {
-    margin-top: 450px;
-  }
 }

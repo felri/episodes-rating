@@ -2,10 +2,10 @@ import React from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { fetchTvShow } from 'utils/api'
 import ClockLoader from "react-spinners/ClockLoader";
-import { ErrorSvg } from 'assets/svg'
+import { ErrorSvg, AreaChartSvg, ScatterChartSvg, BarChartSvg } from 'assets/svg'
 import Header from 'components/Header'
 import Details from 'components/Details'
-import ChartComponent from 'components/ChartComponent'
+import { AreaChartComponnent, BarChartComponnent, ScatterChartComponnent } from 'components/ChartComponent'
 import './style.css'
 
 const Error = ({ onClick }) => (
@@ -17,10 +17,25 @@ const Error = ({ onClick }) => (
   </div>
 )
 
+const ContainerIconsChart = ({ handleClick, selected }) => (
+  <div className="main-container-icon-chart">
+    <div className="container-icon-chart">
+      <AreaChartSvg fill={selected === 'area' ? "#8884d8" : "white"} height={50} width={50} onClick={() => handleClick('area')} />
+    </div>
+    <div className="container-icon-chart">
+      <BarChartSvg fill={selected === 'bar' ? "#8884d8" : "white"} height={50} width={50} onClick={() => handleClick('bar')} />
+    </div>
+    <div className="container-icon-chart">
+      <ScatterChartSvg fill={selected === 'scatter' ? "#8884d8" : "white"} height={50} width={50} onClick={() => handleClick('scatter')} />
+    </div>
+  </div>
+)
+
 function Chart(props) {
   const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState(false)
   const [item, setItem] = React.useState({})
+  const [chartType, setChartType] = React.useState('area')
   const { search } = useParams()
   const history = useHistory()
 
@@ -41,19 +56,34 @@ function Chart(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const handleClick = chart => {
+    setChartType(chart)
+  }
+
   return (
-    <div className="container-chart-screen">
+    <>
       <Header />
-      {loading ? <ClockLoader size={100} color={'#34b79f'} /> :
-        error ? <Error onClick={() => history.push('/')} /> :
-          (item && item.tvshow) && (
-            <div className="container-info-chart-screen">
-              <ChartComponent item={item} />
-              <Details item={item} />
-            </div>
-          )
-      }
-    </div>
+
+      <div className="container-chart-screen">
+        {loading ? <ClockLoader size={100} color={'#34b79f'} /> :
+          error ? <Error onClick={() => history.push('/')} /> :
+            (item && item.tvshow) && (
+              <>
+                <ContainerIconsChart selected={chartType} handleClick={handleClick} />
+                <div className="container-info-chart-screen">
+                  {
+                    chartType === 'area' ? <AreaChartComponnent item={item} /> :
+                      chartType === 'bar' ? <BarChartComponnent item={item} /> :
+                        chartType === 'scatter' ? <ScatterChartComponnent item={item} /> : null
+                  }
+
+                  <Details item={item} />
+                </div>
+              </>
+            )
+        }
+      </div>
+    </>
   );
 }
 

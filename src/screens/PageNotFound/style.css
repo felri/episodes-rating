@@ -23,9 +23,3 @@
 .container-info-chart-screen {
   width: 100%;
 }
-
-@media only screen and (max-width: 600px) {
-  .container-chart-screen {
-    overflow: scroll;
-  }
-}

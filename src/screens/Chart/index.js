@@ -71,11 +71,13 @@ function Chart(props) {
               <>
                 <ContainerIconsChart selected={chartType} handleClick={handleClick} />
                 <div className="container-info-chart-screen">
-                  {
-                    chartType === 'area' ? <AreaChartComponnent item={item} /> :
-                      chartType === 'bar' ? <BarChartComponnent item={item} /> :
-                        chartType === 'scatter' ? <ScatterChartComponnent item={item} /> : null
-                  }
+                  <div className="container-component-charts">
+                    {
+                      chartType === 'area' ? <AreaChartComponnent item={item} /> :
+                        chartType === 'bar' ? <BarChartComponnent item={item} /> :
+                          chartType === 'scatter' ? <ScatterChartComponnent item={item} /> : null
+                    }
+                  </div>
 
                   <Details item={item} />
                 </div>

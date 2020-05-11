@@ -20,3 +20,9 @@
   margin-left: 10px;
   font-size: 25px;
 }
+
+.container-tooltip-message {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}

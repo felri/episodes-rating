@@ -41,6 +41,8 @@ function Chart(props) {
 
   React.useEffect(() => {
     const getTvShow = async search => {
+      console.log(search.replace(/\'/gi, '').replace(/\"/gi, ''))
+
       !loading && setLoading(true)
       const data = await fetchTvShow({ search })
       if (!data || (data && data.Response && data.Response === 'False')) {
@@ -52,12 +54,30 @@ function Chart(props) {
       setLoading(false)
     }
     if (!search || search.length < 3) history.push('/')
-    else getTvShow(search)
+    else getTvShow(search.replace(/\'/gi, '').replace(/\"/gi, ''))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleClick = chart => {
     setChartType(chart)
+  }
+
+  const openImdb = (imdbid) => {
+    try {
+      if (imdbid.activePayload &&
+        imdbid.activePayload.length > 0 &&
+        imdbid.activePayload[0].payload &&
+        imdbid.activePayload[0].payload.imdbid
+      ) {
+        const url = `https://www.imdb.com/title/${imdbid.activePayload[0].payload.imdbid}`
+        window.open(url, '_blank')
+      } else if (imdbid.payload && imdbid.payload.imdbid) {
+        const url = `https://www.imdb.com/title/${imdbid.payload.imdbid}`
+        window.open(url, '_blank')
+      }
+    } catch {
+      console.log('could not open the link to imdb')
+    }
   }
 
   return (
@@ -73,9 +93,9 @@ function Chart(props) {
                 <div className="container-info-chart-screen">
                   <div className="container-component-charts">
                     {
-                      chartType === 'area' ? <AreaChartComponnent item={item} /> :
-                        chartType === 'bar' ? <BarChartComponnent item={item} /> :
-                          chartType === 'scatter' ? <ScatterChartComponnent item={item} /> : null
+                      chartType === 'area' ? <AreaChartComponnent item={item} onClick={openImdb} /> :
+                        chartType === 'bar' ? <BarChartComponnent item={item} onClick={openImdb} /> :
+                          chartType === 'scatter' ? <ScatterChartComponnent item={item} onClick={openImdb} /> : null
                     }
                   </div>
 

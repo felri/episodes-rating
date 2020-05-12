@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBarHome from 'components/SearchBarHome'
+import Footer from 'components/Footer'
 import { fetchArrayTvshows, getSuggestions } from 'utils/api'
 import { useHistory } from "react-router-dom";
 
@@ -75,6 +76,7 @@ function Home(props) {
         onClickShowName={onClickShowName}
         onFocus={onFocus}
       />
+      <Footer />
     </div>
   );
 }

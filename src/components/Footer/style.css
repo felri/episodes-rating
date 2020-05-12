@@ -1,0 +1,14 @@
+.container-footer {
+  position: absolute;
+  right: 3px;
+  bottom: 5px;
+}
+
+.container-footer-link {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.container-footer-link > span {
+  text-decoration: underline;
+}

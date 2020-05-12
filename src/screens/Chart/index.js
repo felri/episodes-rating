@@ -4,6 +4,7 @@ import { fetchTvShow } from 'utils/api'
 import ClockLoader from "react-spinners/ClockLoader";
 import { ErrorSvg, AreaChartSvg, ScatterChartSvg, BarChartSvg } from 'assets/svg'
 import Header from 'components/Header'
+import Footer from 'components/Footer'
 import Details from 'components/Details'
 import { AreaChartComponnent, BarChartComponnent, ScatterChartComponnent } from 'components/ChartComponent'
 import './style.css'
@@ -41,8 +42,6 @@ function Chart(props) {
 
   React.useEffect(() => {
     const getTvShow = async search => {
-      console.log(search.replace(/\'/gi, '').replace(/\"/gi, ''))
-
       !loading && setLoading(true)
       const data = await fetchTvShow({ search })
       if (!data || (data && data.Response && data.Response === 'False')) {
@@ -98,8 +97,8 @@ function Chart(props) {
                           chartType === 'scatter' ? <ScatterChartComponnent item={item} onClick={openImdb} /> : null
                     }
                   </div>
-
                   <Details item={item} />
+                  <Footer />
                 </div>
               </>
             )
